@@ -19,8 +19,8 @@ func init() {
 			servers.PipeToDemux(listenAddr, writeAddr)
 		},
 	}
-	demuxCmd.Flags().StringVarP(&listenAddr, "listen", "l", ":8889", "address to listen on")
-	demuxCmd.Flags().StringVarP(&writeAddr, "write", "w", "", "address to demux to")
+	demuxCmd.Flags().StringVarP(&listenAddr, "listen", "l", ":8889", "address to receive mux")
+	demuxCmd.Flags().StringVarP(&writeAddr, "write", "w", "", "address to demux to (eg. localhost proxy)")
 	demuxCmd.MarkFlagRequired("write")
 
 	rootCmd.AddCommand(demuxCmd)
