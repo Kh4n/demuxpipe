@@ -4,15 +4,15 @@ set -e
 rm -rf ./bin
 rm -rf ./package
 
-GOOS=linux GOARCH=386; go build -o bin/demuxpipe-$GOOS-$GOARCH
-GOOS=linux GOARCH=amd64; go build -o bin/demuxpipe-$GOOS-$GOARCH
+env GOOS=linux GOARCH=386 go build -o bin/demuxpipe-linux-x86
+env GOOS=linux GOARCH=amd64 go build -o bin/demuxpipe-linux-x64
 
-# darwing 386 is not supported
-# GOOS=darwin GOARCH=386; go build -o bin/demuxpipe-$GOOS-$GOARCH
-GOOS=darwin GOARCH=amd64; go build -o bin/demuxpipe-$GOOS-$GOARCH
+# darwin 386 is not supported
+# env GOOS=darwin GOARCH=386 go build -o bin/demuxpipe-macos-x86
+env GOOS=darwin GOARCH=amd64 go build -o bin/demuxpipe-macos-x64
 
-GOOS=windows GOARCH=386; go build -o bin/demuxpipe-$GOOS-$GOARCH.exe
-GOOS=windows GOARCH=amd64; go build -o bin/demuxpipe-$GOOS-$GOARCH.exe
+env GOOS=windows GOARCH=386 go build -o bin/demuxpipe-win-x86.exe
+env GOOS=windows GOARCH=amd64 go build -o bin/demuxpipe-win-x64.exe
 
 mkdir package
 
